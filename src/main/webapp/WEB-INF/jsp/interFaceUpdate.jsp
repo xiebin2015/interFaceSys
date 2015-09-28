@@ -25,6 +25,9 @@ var contextPath='<%=request.getContextPath()%>';
 	   		     },
 	   			 success : function(data) {
 	   				console.log(data);
+	   				if(data.messageInfo.success){
+	   					alert("修改成功");
+	   				}
 	   			 }
 	   		   });
 	    	        
@@ -56,8 +59,8 @@ var contextPath='<%=request.getContextPath()%>';
 				</button>
 				<ul class="am-dropdown-content">
 					<li><a href="/interfaceSys/goQueryPanel">接口查询</a></li>
-					<li><a href="goAddInterFace">添加系统</a></li>
-					<li><a href="#">添加产品</a></li>
+					<!-- <li><a href="goAddInterFace">添加系统</a></li>
+					<li><a href="#">添加产品</a></li> -->
 					<li><a href="/interfaceSys/goAddInterFace" target="_blank">添加接口</a></li>
 				</ul>
 			</div>

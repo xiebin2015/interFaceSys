@@ -40,7 +40,7 @@
 	<h1 class="am-header-title">
 		<a href="#title-link" class="">独孤九剑</a>
 	</h1>
-
+<h>欢迎${userInfo.userName}登录系统</h>
 	<div class="am-header-right am-header-nav">
 		<a href="#right-link" class=""> <i
 			class="am-header-icon am-icon-bars" title="开发ing..."> </i>
@@ -51,8 +51,8 @@
 				</button>
 				<ul class="am-dropdown-content">
 					<li><a href="goQueryPanel">接口查询</a></li>
-					<li><a href="goAddInterFace">添加系统</a></li>
-					<li><a href="#">添加产品</a></li>
+					<!-- <li><a href="goAddInterFace">添加系统</a></li>
+					<li><a href="#">添加产品</a></li> -->
 					<li><a href="goAddInterFace" target="_blank">添加接口</a></li>
 				</ul>
 			</div>

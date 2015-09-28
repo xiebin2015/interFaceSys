@@ -28,7 +28,7 @@
 			},
 			success : function(data) {
 				var listStr = "";
-				$.each(data.messageInfo.messageInfo.list,function(index,rowData){
+				$.each(data.messageInfo.success.list,function(index,rowData){
 					listStr += 
 						'<tr data-id='+rowData.id+'>'+
 							'<td  width=60 class="am-primary">'+ (index+1)+ '</td>'+ 
@@ -44,23 +44,23 @@
 				$("#propDateShowBody").html(listStr);
 				//添加页码
 				var pagesStr='';
-				pageNum=parseInt(data.messageInfo.messageInfo.pageNum);
-				pages=parseInt(data.messageInfo.messageInfo.pages);
-				if(data.messageInfo.messageInfo.isFirstPage||pages==0){
+				pageNum=parseInt(data.messageInfo.success.pageNum);
+				pages=parseInt(data.messageInfo.success.pages);
+				if(data.messageInfo.success.isFirstPage||pages==0){
 				     pagesStr+='<li class="am-pagination-first am-disabled">';
 				}else{
 					pagesStr+='<li class="am-pagination-first">';
 				}
 				pagesStr+='<a class="">第一页</a></li>';
-				if(data.messageInfo.messageInfo.hasPreviousPage){
+				if(data.messageInfo.success.hasPreviousPage){
 					pagesStr+= '<li class="am-pagination-prev"><a class="">上一页</a></li>'
 				}else{
 					pagesStr+= '<li class="am-pagination-prev am-disabled"><a class="">上一页</a></li>'
 				}
 				//添加分页信息
-				$.each(data.messageInfo.messageInfo.navigatepageNums,function(index,pageInfo){
+				$.each(data.messageInfo.success.navigatepageNums,function(index,pageInfo){
 					//添加页码
-					if(data.messageInfo.messageInfo.pageNum==pageInfo){
+					if(data.messageInfo.success.pageNum==pageInfo){
 						pagesStr+='<li class="am-active"><a class="">'+pageInfo+'</a></li>';
 					}else{
 						pagesStr+='<li class=""><a class="">'+pageInfo+'</a></li>';
@@ -68,12 +68,12 @@
 					
 				});
 				
-				if(data.messageInfo.messageInfo.hasNextPage){
+				if(data.messageInfo.success.hasNextPage){
 					pagesStr+='<li class="am-pagination-next "><a class="">下一页</a></li>'
 				}else{
 					pagesStr+='<li class="am-pagination-next am-disabled"><a class="">下一页</a></li>';
 				}
-				if(data.messageInfo.messageInfo.isLastPage){
+				if(data.messageInfo.success.isLastPage){
 					pagesStr+='<li class="am-pagination-last am-disabled"><a class="">最末页</a></li>';
 				}else{
 					pagesStr+='<li class="am-pagination-last"><a class="">最末页</a></li>';
@@ -91,7 +91,7 @@
 	$(function() {
 		
 		loadInterFacePage({
-			  url:"getAllInterFaces",
+			  url:"getAllInterFace",
 			  data:{
 					"pageNum" : $("#pageNum").val(),
 					"interFaceInfo.ifName":$("#ifName").val()
@@ -153,17 +153,17 @@
 		        onConfirm: function(options) {
 		          var deleteId = $(this.relatedTarget).parent().parent().attr("data-id");
 		          $.ajax({
-						cache : true,
 						type : "POST",
-						url : "deleteInterFaceById/"+deleteId,
+						url : "deleteInterFaceById",
+						data:{
+							"id":deleteId
+						},
 						async : false,
 						error : function(request) {
 							alert("Connection error");
 						},
 						success : function(data) {
-							console.log(data);
-							//添加接口信息
-							if(data.success.messageInfo=="true"){
+							if(data.messageInfo.success){
 								self.location.href=contextPath+"/goQueryPanel";
 							}
 							
@@ -183,7 +183,7 @@
 	<h1 class="am-header-title">
 		<a href="#title-link" class="">独孤九剑</a>
 	</h1>
-  <h>欢迎${userInfo.loginName}登录系统</h>
+  <h>欢迎${userInfo.userName}登录系统</h>
 	<div class="am-header-right am-header-nav">
 		<a href="#right-link" class=""> <i
 			class="am-header-icon am-icon-bars" title="开发ing..."> </i>
@@ -194,8 +194,8 @@
 				</button>
 				<ul class="am-dropdown-content">
 					<li><a href="goQueryPanel">接口查询</a></li>
-					<li><a href="goAddInterFace">添加系统</a></li>
-					<li><a href="#">添加产品</a></li>
+					<!-- <li><a href="goAddInterFace">添加系统</a></li>
+					<li><a href="#">添加产品</a></li> -->
 					<li><a href="goAddInterFace" target="_blank">添加接口</a></li>
 				</ul>
 			</div>

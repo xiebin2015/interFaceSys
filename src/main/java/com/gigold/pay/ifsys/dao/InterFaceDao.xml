@@ -90,6 +90,7 @@
 		from T_IF_INTERFACE
 		where IF_NAME
 		like '%${ifName}%'
+		or IF_DESC like '%${ifName}%'
 	</select>
 
 
@@ -153,7 +154,15 @@
 
 
 	<update id="updateInterFace" parameterType="com.gigold.pay.ifsys.bo.InterFaceInfo">
-		update T_IF_INTERFACE set IF_NAME=#{ifName} where ID=#{id}
+		update T_IF_INTERFACE 
+		set   
+		  IF_NAME=#{ifName},
+		  IF_DESC=#{ifDesc},
+		  IF_REQUEST=#{ifRequest},
+		  IF_RESPONSE_SUCCESS=#{ifResponseSuccuss},
+		  IF_RESPONSE_FAILURE=#{ifResponseFailure},
+		  IF_URL=#{ifUrl}
+		 where ID=#{id}
 	</update>
 	
 	

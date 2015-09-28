@@ -85,7 +85,7 @@ public class InterFaceController {
 		PageInfo<InterFaceInfo> pageInfo = interFaceService.getInterFaceByName(dto);
 		InterFaceResponseDto idto = new InterFaceResponseDto();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("messageInfo", pageInfo);
+		map.put("success", pageInfo);
 		idto.setMessageInfo(map);
 		return idto;
 
@@ -103,22 +103,12 @@ public class InterFaceController {
 		PageInfo<InterFaceInfo> pageInfo = interFaceService.getAllInterFace(dto);
 		InterFaceResponseDto idto = new InterFaceResponseDto();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("messageInfo", pageInfo);
+		map.put("success", pageInfo);
 		idto.setMessageInfo(map);
 		return idto;
 
 	}
 
-	@RequestMapping("/getAllInterFaces")
-	public @ResponseBody InterFaceResponseDto getAllInterFaces(InterFaceRequestDto dto) {
-		PageInfo<InterFaceInfo> pageInfo = interFaceService.getAllInterFaces(dto);
-		InterFaceResponseDto idto = new InterFaceResponseDto();
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("messageInfo", pageInfo);
-		idto.setMessageInfo(map);
-		return idto;
-
-	}
 
 	/**
 	 * 新增接口纪录
@@ -137,7 +127,7 @@ public class InterFaceController {
 			map.put("id", interFaceInfo.getId());
 			
 		} else {
-			map.put("failure", true);
+			map.put("success", false);
 		}
 		idto.setMessageInfo(map);
 
@@ -151,8 +141,8 @@ public class InterFaceController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping("/deleteInterFaceById/{id}")
-	public @ResponseBody InterFaceResponseDto deleteInterFace(@PathVariable int id) {
+	@RequestMapping("/deleteInterFaceById")
+	public @ResponseBody InterFaceResponseDto deleteInterFace(int id) {
 		boolean flag = interFaceService.deleteInterFaceById(id);
 		InterFaceResponseDto idto = new InterFaceResponseDto();
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -160,7 +150,7 @@ public class InterFaceController {
 			map.put("success", true);
 			
 		} else {
-			map.put("failure", true);
+			map.put("success", false);
 		}
 		idto.setMessageInfo(map);
 		return idto;
@@ -182,7 +172,7 @@ public class InterFaceController {
 			map.put("success", true);
 			
 		} else {
-			map.put("failure", true);
+			map.put("success", false);
 		}
 		idto.setMessageInfo(map);
 		return idto;
