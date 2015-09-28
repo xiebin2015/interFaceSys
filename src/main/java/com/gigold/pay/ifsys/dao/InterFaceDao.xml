@@ -108,19 +108,20 @@
 		IF_RESPONSE_FAILURE,
 		IF_STATUS,
 		IF_URL
-		from T_IF_INTERFACE
+		from
+		T_IF_INTERFACE
 		where IF_NAME
 		like '%${ifName}%'
-    
-    
+
+
 	</select>
-	
-	
+
+
 	<select id="getAllInterFace" resultMap="ifListResultMap">
 		select
 		ID,
 		IF_NAME,
-		IF_DESC, 
+		IF_DESC,
 		IF_CREATEBY,
 		IF_CREATETIME,
 		IF_SYS_ID,
@@ -131,12 +132,12 @@
 		IF_STATUS,
 		IF_URL
 		from
-		T_IF_INTERFACE 
+		T_IF_INTERFACE
 		where 1=1
-	
+
 	</select>
 
-	<insert id="addInterFace" parameterType="com.gigold.pay.ifsys.bo.InterFaceInfo"
+	<insert id="addInterFace" parameterType="com.gigold.pay.ifsys.bo.InterFaceInfo" 
 		useGeneratedKeys="true" keyProperty="id">
 		insert into
 		T_IF_INTERFACE(IF_NAME,IF_DESC,IF_CREATEBY,IF_CREATETIME,IF_SYS_ID,IF_PRO_ID,IF_REQUEST,IF_RESPONSE_SUCCESS,IF_RESPONSE_FAILURE,IF_STATUS,IF_URL)
@@ -149,13 +150,14 @@
 		T_IF_INTERFACE
 		where ID=#{id}
 	</delete>
-  
 
 
-
- <update id="updateInterFace" parameterType="com.gigold.pay.ifsys.bo.InterFaceInfo" >
-        update T_IF_INTERFACE set IF_NAME=#{ifName} where ID=#{id}
-    </update>
+	<update id="updateInterFace" parameterType="com.gigold.pay.ifsys.bo.InterFaceInfo">
+		update T_IF_INTERFACE set IF_NAME=#{ifName} where ID=#{id}
+	</update>
+	
+	
+	
 </mapper>
  
  

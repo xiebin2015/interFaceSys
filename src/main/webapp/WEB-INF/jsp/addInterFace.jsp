@@ -15,10 +15,7 @@
 		 var contextPath='<%=request.getContextPath()%>';
 
 		$("#saveInterFaceBtn").click(function() {
-			console.log($('#interFaceForm').serialize());
-			$('#interFaceForm').submit(function() {
 				$.ajax({
-					cache : true,
 					type : "POST",
 					url : "addInterface",
 					data : $('#interFaceForm').serialize(),// 你的formid
@@ -27,12 +24,9 @@
 						alert("Connection error");
 					},
 					success : function(data) {
-						self.location.href=contextPath+"/goQueryPanel";
+						self.location.href=contextPath+"/queryDetailById/"+data.messageInfo.id;
 					}
 				});
-
-				return false;
-			});
 
 		});
 
@@ -119,7 +113,7 @@
 			</tr>
 		</table>
 
-		<button type="submit" id="saveInterFaceBtn"
+		<button type="button" id="saveInterFaceBtn"
 			class="am-btn am-btn-success propButton">保存</button>
 	</form>
 </body>

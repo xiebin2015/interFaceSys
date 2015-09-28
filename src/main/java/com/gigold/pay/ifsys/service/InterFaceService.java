@@ -49,8 +49,7 @@ public class InterFaceService {
 	}
 
 	public boolean updateInterFace(InterFaceInfo interFaceInfo) {
-		boolean flag=true;
-		interFaceDao.updateInterFace(interFaceInfo);
+		boolean flag=interFaceDao.updateInterFace(interFaceInfo);
 		return flag;
 	}
 

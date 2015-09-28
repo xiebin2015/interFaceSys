@@ -66,6 +66,7 @@ var contextPath='<%=request.getContextPath()%>';
 	</header>
     
 	<form id="interFaceUpdateForm">
+	     <input type="hidden" name="id" id="id" value="${interFaceInfo.id}"/>
 		<table class="am-table am-table-bordered am-table-hover">
 		<caption>新增接口信息</caption>
 			<tr>

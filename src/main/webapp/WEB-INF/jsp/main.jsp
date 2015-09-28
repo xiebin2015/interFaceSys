@@ -28,7 +28,7 @@
 			},
 			success : function(data) {
 				var listStr = "";
-				$.each(data.success.messageInfo.list,function(index,rowData){
+				$.each(data.messageInfo.messageInfo.list,function(index,rowData){
 					listStr += 
 						'<tr data-id='+rowData.id+'>'+
 							'<td  width=60 class="am-primary">'+ (index+1)+ '</td>'+ 
@@ -44,23 +44,23 @@
 				$("#propDateShowBody").html(listStr);
 				//添加页码
 				var pagesStr='';
-				pageNum=parseInt(data.success.messageInfo.pageNum);
-				pages=parseInt(data.success.messageInfo.pages);
-				if(data.success.messageInfo.isFirstPage||pages==0){
+				pageNum=parseInt(data.messageInfo.messageInfo.pageNum);
+				pages=parseInt(data.messageInfo.messageInfo.pages);
+				if(data.messageInfo.messageInfo.isFirstPage||pages==0){
 				     pagesStr+='<li class="am-pagination-first am-disabled">';
 				}else{
 					pagesStr+='<li class="am-pagination-first">';
 				}
 				pagesStr+='<a class="">第一页</a></li>';
-				if(data.success.messageInfo.hasPreviousPage){
+				if(data.messageInfo.messageInfo.hasPreviousPage){
 					pagesStr+= '<li class="am-pagination-prev"><a class="">上一页</a></li>'
 				}else{
 					pagesStr+= '<li class="am-pagination-prev am-disabled"><a class="">上一页</a></li>'
 				}
 				//添加分页信息
-				$.each(data.success.messageInfo.navigatepageNums,function(index,pageInfo){
+				$.each(data.messageInfo.messageInfo.navigatepageNums,function(index,pageInfo){
 					//添加页码
-					if(data.success.messageInfo.pageNum==pageInfo){
+					if(data.messageInfo.messageInfo.pageNum==pageInfo){
 						pagesStr+='<li class="am-active"><a class="">'+pageInfo+'</a></li>';
 					}else{
 						pagesStr+='<li class=""><a class="">'+pageInfo+'</a></li>';
@@ -68,12 +68,12 @@
 					
 				});
 				
-				if(data.success.messageInfo.hasNextPage){
+				if(data.messageInfo.messageInfo.hasNextPage){
 					pagesStr+='<li class="am-pagination-next "><a class="">下一页</a></li>'
 				}else{
 					pagesStr+='<li class="am-pagination-next am-disabled"><a class="">下一页</a></li>';
 				}
-				if(data.success.messageInfo.isLastPage){
+				if(data.messageInfo.messageInfo.isLastPage){
 					pagesStr+='<li class="am-pagination-last am-disabled"><a class="">最末页</a></li>';
 				}else{
 					pagesStr+='<li class="am-pagination-last"><a class="">最末页</a></li>';
@@ -114,11 +114,6 @@
 
 		});
 		
-		/* $(".deleteBtn").click(function(){
-			 var id=$(this).attr("id");
-			 var obj= $(this).parent().parent();
-			 
-		}); */
 		
 		$(document).on("click",".pageUl li",function(){
 			var textNum = $(this).text();
@@ -209,18 +204,6 @@
 	</header>
 	<div class="filtrate">
 		<form id="srearchFrom">
-		<!-- 	
-			筛选你需要查找的系统／接口 <select
-				data-am-selected="{btnWidth: '10%', btnSize: 'sm'}">
-				<option value="a">系统1</option>
-				<option value="b">系统2</option>
-				<option value="o">系统3</option>
-			</select> <select data-am-selected="{btnWidth: '10%', btnSize: 'sm'}">
-				<option value="a">接口1</option>
-				<option value="b">接口2</option>
-				<option value="o">接口3</option>
-			</select> -->
-
 			<!--搜索-->
 			<div class="search">
 

@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -87,7 +86,7 @@ public class InterFaceController {
 		InterFaceResponseDto idto = new InterFaceResponseDto();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("messageInfo", pageInfo);
-		idto.setSuccess(map);
+		idto.setMessageInfo(map);
 		return idto;
 
 	}
@@ -105,7 +104,7 @@ public class InterFaceController {
 		InterFaceResponseDto idto = new InterFaceResponseDto();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("messageInfo", pageInfo);
-		idto.setSuccess(map);
+		idto.setMessageInfo(map);
 		return idto;
 
 	}
@@ -116,7 +115,7 @@ public class InterFaceController {
 		InterFaceResponseDto idto = new InterFaceResponseDto();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("messageInfo", pageInfo);
-		idto.setSuccess(map);
+		idto.setMessageInfo(map);
 		return idto;
 
 	}
@@ -134,12 +133,13 @@ public class InterFaceController {
 		InterFaceResponseDto idto = new InterFaceResponseDto();
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (flag) {
-			map.put("messageInfo", "true");
-			idto.setSuccess(map);
+			map.put("success", true);
+			map.put("id", interFaceInfo.getId());
+			
 		} else {
-			map.put("messageInfo", "false");
-			idto.setFailure(map);
+			map.put("failure", true);
 		}
+		idto.setMessageInfo(map);
 
 		return idto;
 
@@ -157,12 +157,12 @@ public class InterFaceController {
 		InterFaceResponseDto idto = new InterFaceResponseDto();
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (flag) {
-			map.put("messageInfo", "true");
-			idto.setSuccess(map);
+			map.put("success", true);
+			
 		} else {
-			map.put("messageInfo", "false");
-			idto.setFailure(map);
+			map.put("failure", true);
 		}
+		idto.setMessageInfo(map);
 		return idto;
 
 	}
@@ -179,13 +179,12 @@ public class InterFaceController {
 		InterFaceResponseDto idto = new InterFaceResponseDto();
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (flag) {
-			map.put("messageInfo", true);
-			idto.setSuccess(map);
+			map.put("success", true);
+			
 		} else {
-			map.put("messageInfo", false);
-			idto.setFailure(map);
+			map.put("failure", true);
 		}
-
+		idto.setMessageInfo(map);
 		return idto;
 
 	}

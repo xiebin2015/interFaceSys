@@ -6,26 +6,14 @@ import com.gigold.pay.framework.web.ResponseDto;
 
 public class InterFaceResponseDto extends ResponseDto {
 
-	private Map<String, Object> success;
+	private Map<String, Object> messageInfo;
 
-	private Map<String,Object> failure;
-	
-	public Map<String, Object> getFailure() {
-		return failure;
+	public Map<String, Object> getMessageInfo() {
+		return messageInfo;
 	}
 
-	public void setFailure(Map<String, Object> failure) {
-		this.failure = failure;
+	public void setMessageInfo(Map<String, Object> messageInfo) {
+		this.messageInfo = messageInfo;
 	}
 
-	public Map<String, Object> getSuccess() {
-		return success;
-	}
-
-	public void setSuccess(Map<String, Object>success) {
-		this.success = success;
-	}
-
-	
-	 
 }

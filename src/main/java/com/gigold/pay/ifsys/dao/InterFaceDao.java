@@ -43,7 +43,7 @@ public interface InterFaceDao {
 	 * @param interFaceInfo
 	 * @return
 	 */
-	public void updateInterFace(InterFaceInfo interFaceInfo);
+	public boolean updateInterFace(InterFaceInfo interFaceInfo);
 
 	/**
 	 * 新增接口信息
