@@ -105,10 +105,31 @@ public class InterFaceController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("success", pageInfo);
 		idto.setMessageInfo(map);
+		idto.setRspCd(CodeItem.ITERACE_FAILURE);
 		return idto;
 
 	}
 
+	
+	/**
+	 * 分页查询
+	 * 
+	 * @param dto
+	 * @return
+	 */
+
+	@RequestMapping("/getAllInterFace1")
+	public @ResponseBody InterFaceResDto getAllInterFace1(InterFaceRequestDto dto) {
+		PageInfo<InterFaceInfo> pageInfo = interFaceService.getAllInterFace(dto);
+		InterFaceResDto idto = new InterFaceResDto();
+		idto.setPageInfo(pageInfo);
+		idto.setRspCd(CodeItem.ITERACE_FAILURE);
+		return idto;
+
+	}
+
+	
+	
 
 	/**
 	 * 新增接口纪录

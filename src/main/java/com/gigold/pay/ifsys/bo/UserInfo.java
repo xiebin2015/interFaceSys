@@ -2,7 +2,12 @@ package com.gigold.pay.ifsys.bo;
 
 import java.io.Serializable;
 
-public class UserInfo implements Serializable{
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
+public class UserInfo implements Serializable {
 
 	/**
 	 * 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>独孤九剑</title>
+<title>独孤九剑-修改接口</title>
 <link rel="stylesheet" type="text/css"
 	href="/interfaceSys/info/css/amazeui.min.css">
 <link rel="stylesheet" type="text/css"
@@ -30,12 +30,24 @@ var contextPath='<%=request.getContextPath()%>';
 	   				}
 	   			 }
 	   		   });
-	    	        
-	    	   
 	    	   
 	       });
-	   
-	   
+	    //测试接口
+	       $("#testInterFaceBtn").click(function() {
+				$.ajax({
+					type : "POST",
+					url : $("#ifUrl").val(),
+					data : eval("("+$('#ifRequest').val()+")"),
+					async : true,
+					error : function(request) {
+						alert("Connection error");
+					},
+					success : function(data) {
+						console.log(data);
+					}
+				});
+
+		});
 	   
 	   
    });
@@ -50,10 +62,10 @@ var contextPath='<%=request.getContextPath()%>';
 	</h1>
 
 	<div class="am-header-right am-header-nav">
-		<a href="#right-link" class=""> <i
+		 <i
 			class="am-header-icon am-icon-bars" title="开发ing..."> </i>
 			<div class="am-dropdown" data-am-dropdown>
-				<button class="am-btn am-btn-primary am-dropdown-toggle"
+				<button class="am-btn am-btn-primary am-dropdown-toggle menu"
 					data-am-dropdown-toggle>
 					查看功能<span class="am-icon-caret-down"></span>
 				</button>
@@ -61,10 +73,9 @@ var contextPath='<%=request.getContextPath()%>';
 					<li><a href="/interfaceSys/goQueryPanel">接口查询</a></li>
 					<!-- <li><a href="goAddInterFace">添加系统</a></li>
 					<li><a href="#">添加产品</a></li> -->
-					<li><a href="/interfaceSys/goAddInterFace" target="_blank">添加接口</a></li>
+					<li><a href="/interfaceSys/goAddInterFace">添加接口</a></li>
 				</ul>
 			</div>
-		</a>
 	</div>
 	</header>
     
@@ -126,9 +137,13 @@ var contextPath='<%=request.getContextPath()%>';
 				<td>&nbsp;</td>
 			</tr>
 		</table>
-
+       <div class="propButton">
 		<button type="button" id="updateInterFaceBtn"
-			class="am-btn am-btn-success propButton" >确认修改</button>
+			class="am-btn am-btn-success" >确认修改</button>
+			
+	<button type="button" id="testInterFaceBtn"
+			class="am-btn am-btn-success" >测试</button>	
+			</div>	
 	</form>
 	<script src="/interfaceSys/info/js/amazeui.min.js"></script>
 </body>

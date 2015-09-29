@@ -3,6 +3,11 @@ package com.gigold.pay.ifsys.bo;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class InterFaceInfo implements Serializable {
 
 	/**
@@ -17,6 +22,7 @@ public class InterFaceInfo implements Serializable {
 	private Timestamp ifCreateTime;
 	private int ifSysId;
 	private int ifCreateBy;
+
 	public int getIfCreateBy() {
 		return ifCreateBy;
 	}
@@ -62,7 +68,6 @@ public class InterFaceInfo implements Serializable {
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-
 
 	public Timestamp getIfCreateTime() {
 		return ifCreateTime;

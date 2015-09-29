@@ -9,6 +9,10 @@ ul{
 *:focus{
 	outline: none;
 }
+.width90{
+	width:85% !important;
+	display: inline-block !important;
+}
 .textLeft{
 	text-align: left !important;
 	padding-left:20px !important;
@@ -27,9 +31,13 @@ ul{
 .titleH1{
 	display: inline-block;
 	margin:0;
-	color:#fff;
 	padding-left:30px;
 }
+.titleH1 a{
+	
+	color:#fff !important;
+}
+
 .titleOption{
 	display: inline-block;
 	position: absolute;
@@ -49,6 +57,9 @@ ul{
 .titleOption a:hover{
 	box-shadow: inset 0 3px 5px rgba(0,0,0,.15);
  	background-color: #0a628f;
+}
+.menu{
+	margin-top:-22px !important;
 }
 
 .search{
@@ -116,11 +127,13 @@ ul{
 	background:none;
 	width:100%;
 }
-
 .propButton{
-	width:200px;
-	display:block;
 	margin:auto;
+	text-align: center;
+}
+.propButton button{
+	width:100px;
+	display:inline-block;
 	border-radius:5px;
 }
 

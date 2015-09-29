@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>独孤九剑</title>
+<title>独孤九剑－新增接口</title>
 <link rel="stylesheet" type="text/css" href="info/css/amazeui.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="info/js/jquery.min.js"></script>
@@ -36,16 +36,15 @@
 </head>
 
 <body>
-	<header data-am-widget="header" class="am-header am-header-default">
-	<h1 class="am-header-title">
+	<header data-am-widget="header" class="am-header am-header-default am-titlebar am-no-layout">
+	<h1 class="titleH1">
 		<a href="#title-link" class="">独孤九剑</a>
 	</h1>
-<h>欢迎${userInfo.userName}登录系统</h>
 	<div class="am-header-right am-header-nav">
-		<a href="#right-link" class=""> <i
+		<i
 			class="am-header-icon am-icon-bars" title="开发ing..."> </i>
 			<div class="am-dropdown" data-am-dropdown>
-				<button class="am-btn am-btn-primary am-dropdown-toggle"
+				<button class="am-btn am-btn-primary am-dropdown-toggle menu"
 					data-am-dropdown-toggle>
 					查看功能<span class="am-icon-caret-down"></span>
 				</button>
@@ -53,10 +52,9 @@
 					<li><a href="goQueryPanel">接口查询</a></li>
 					<!-- <li><a href="goAddInterFace">添加系统</a></li>
 					<li><a href="#">添加产品</a></li> -->
-					<li><a href="goAddInterFace" target="_blank">添加接口</a></li>
+					<li><a href="goAddInterFace">添加接口</a></li>
 				</ul>
 			</div>
-		</a>
 	</div>
 	</header>
 
@@ -113,8 +111,12 @@
 			</tr>
 		</table>
 
+		
+			<div class="propButton">
 		<button type="button" id="saveInterFaceBtn"
-			class="am-btn am-btn-success propButton">保存</button>
+			class="am-btn am-btn-success">保存</button>
+			</div>	
+			
 	</form>
 </body>
 </html>

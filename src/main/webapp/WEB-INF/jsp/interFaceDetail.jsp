@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>独孤九剑</title>
+<title>独孤九剑－接口明细</title>
 <link rel="stylesheet" type="text/css"
 	href="/interfaceSys/info/css/amazeui.min.css">
 <link rel="stylesheet" type="text/css"
@@ -18,10 +18,10 @@
 	</h1>
 
 	<div class="am-header-right am-header-nav">
-		<a href="#right-link" class=""> <i
+		 <i
 			class="am-header-icon am-icon-bars" title="开发ing..."> </i>
 			<div class="am-dropdown" data-am-dropdown>
-				<button class="am-btn am-btn-primary am-dropdown-toggle"
+				<button class="am-btn am-btn-primary am-dropdown-toggle menu"
 					data-am-dropdown-toggle>
 					查看功能<span class="am-icon-caret-down"></span>
 				</button>
@@ -29,14 +29,14 @@
 					<li><a href="/interfaceSys/goQueryPanel">接口查询</a></li>
 					<!-- <li><a href="goAddInterFace">添加系统</a></li>
 					<li><a href="#">添加产品</a></li> -->
-					<li><a href="/interfaceSys/goAddInterFace" target="_blank">添加接口</a></li>
+					<li><a href="/interfaceSys/goAddInterFace">添加接口</a></li>
 				</ul>
 			</div>
-		</a>
 	</div>
 	</header>
 
 	<table class="am-table am-table-bordered am-table-hover">
+	
 		<tr>
 			<td class="am-primary">接口名</td>
 			<td>${interFaceInfo.ifName }</td>
@@ -51,7 +51,7 @@
 		</tr>
 		<tr>
 			<th class="am-primary">请求部分</th>
-			<td colspan="6" rowspan="3"><pre>${interFaceInfo.ifRequest }</pre></td>
+			<td colspan="6" rowspan="3"><pre class="width90">${interFaceInfo.ifRequest }</pre></td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
@@ -64,7 +64,7 @@
 		</tr>
 		<tr>
 			<th class="am-primary">成功(Success)</th>
-			<td colspan="6" rowspan="3"><pre>${interFaceInfo.ifResponseSuccuss }</pre>
+			<td colspan="6" rowspan="3"><pre class="width90">${interFaceInfo.ifResponseSuccuss }</pre>
 			</td>
 		</tr>
 		<tr>
@@ -75,7 +75,7 @@
 		</tr>
 		<tr>
 			<th class="am-primary">失败(Error)</th>
-			<td colspan="6" rowspan="3"><pre>${interFaceInfo.ifResponseFailure }</pre>
+			<td colspan="6" rowspan="3"><pre class="width90">${interFaceInfo.ifResponseFailure }</pre>
 			</td>
 		</tr>
 		<tr>

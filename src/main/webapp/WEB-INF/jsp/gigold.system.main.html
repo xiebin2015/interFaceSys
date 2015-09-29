@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>独孤九剑</title>
+		<link rel="stylesheet" type="text/css" href="info/css/amazeui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default am-titlebar">
+			<h1 class="titleH1">独孤九剑</h1>
+
+			<div class="titleOption" data-am-button>
+				<a class="active">首页</a>
+				<a>开发中</a>
+				<a>开发中</a>
+
+			</div>
+
+			<div class="am-header-right am-header-nav">
+				<a href="#right-link" class="">
+					<i class="am-header-icon am-icon-bars" title="开发ing...">
+					</i>
+					<div class="am-dropdown" data-am-dropdown>
+						<button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle>查看功能<span class="am-icon-caret-down"></span></button>
+						<ul class="am-dropdown-content">
+							<li><a href="#">添加系统</a></li>
+							<li><a href="#">添加产品</a></li>
+							<li><a href="addInterFacr.html" target="_blank">添加接口</a></li>
+						</ul>
+					</div>
+				</a>
+			</div>
+		</header>
+		<div class="filtrate">
+			<!--筛选-->
+			<!--筛选你需要查找的系统／接口
+			<select data-am-selected="{btnWidth: '10%', btnSize: 'sm'}">
+				<option value="a">系统1</option>
+				<option value="b">系统2</option>
+				<option value="o">系统3</option>
+			</select>
+
+			<select data-am-selected="{btnWidth: '10%', btnSize: 'sm'}">
+				<option value="a">接口1</option>
+				<option value="b">接口2</option>
+				<option value="o">接口3</option>
+			</select>-->
+
+			<!--搜索-->
+			<div class="search">
+				<input placeholder="输入需要查找的内容" />
+				<button>查找</button>
+			</div>
+		</div>
+
+		<nav class="navMid">
+			<table class="am-table am-table-bordered am-table-hover am-table-compact am-table-centered" id="propDateShow">
+				<!--<tr>
+					<th class="am-primary">接口名</th>
+					<th class="textLeft">这里是接口描述。。。。。。。。。。。。。。。。。。。</th>
+					<td>
+						<button type="button" class="am-btn am-btn-primary">点击查看</button>
+						<button type="button" class="am-btn am-btn-primary">删除</button>
+					</td>
+				</tr>-->
+			</table>
+
+			<ul data-am-widget="pagination" class="am-pagination am-pagination-default pageUl">
+
+			</ul>
+			<!--模态窗口-->
+			<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+			  <div class="am-modal-dialog">
+			    <div class="am-modal-hd">Gigold</div>
+			    <div class="am-modal-bd">
+			      你，确定要删除这条记录吗？
+			    </div>
+			    <div class="am-modal-footer">
+			      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+			      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+			    </div>
+			  </div>
+			</div>
+			
+		</nav>
+		<script type="text/javascript" src="info/js/jquery.min.js"></script>
+		<script src="info/js/amazeui.min.js"></script>
+		<script src="info/ajax/ajax.js"></script>
+		<script type="text/javascript" src="js/gigold.system.main.js"></script>
+		<script>
+			function getPageDate(date) {
+				var list = date.success.messageInfo.list;
+				var pages = date.success.messageInfo.pages;
+				var pageNum = date.success.messageInfo.pageNum;
+				var firstPage = date.success.messageInfo.firstPage;
+				var lastPage = date.success.messageInfo.lastPage;
+				//添加接口信息
+				var listStr = "";
+				for (var i = 0; i < list.length; i++) {
+					listStr += '<tr date-id=' + list[i].id + '><th class="am-primary" >' + list[i].ifName + '</th>' + '<th class="textLeft">这里是接口描述。。。。。。。。。。。。。。。。。。。</th>' 
+					+ '<td><a type="button" class="">点击查看</a> \t \t ' 
+					+ '<a type="button" class=" deleteBtn">删除</a></tr>'
+				}
+				$("#propDateShow").html(listStr);
+				//添加页码
+				var pagesStr = '<li class="am-pagination-first "><a class="">第一页</a></li><li class="am-pagination-prev "><a class="">上一页</a></li>'
+				for (var n = 0; n < pages; n++) {
+					pagesStr += '<li class=""><a class="">' + (n + 1 * 1) + '</a></li>'
+				}
+				pagesStr += '<li class="am-pagination-next "><a class="">下一页</a></li><li class="am-pagination-last "><a class="">最末页</a></li>'
+				$(".pageUl").html(pagesStr);
+				//当前页码样式
+				var pageLi = $(".pageUl").children("li");
+				for (var pageLis = 0; pageLis < pageLi.length; pageLis++) {
+					var needLi = pageLi[pageLis];
+					var curLi = $(needLi).children("a").text();
+					if (pageNum == curLi) {
+						$(needLi).addClass("am-active");
+						$(needLi).siblings().removeClass("am-active");
+					}
+				}
+				//第一页与最后一页的时候不能点击上一页与下一页
+				if (pageNum == firstPage) {
+					$(".am-pagination-first").addClass("am-disabled");
+					$(".am-pagination-prev").addClass("am-disabled");
+				} else if (pageNum == lastPage) {
+					$(".am-pagination-last").addClass("am-disabled");
+					$(".am-pagination-next").addClass("am-disabled");
+				}
+				//点击页码跳转
+				$('.pageUl').on("click", "a", function() {
+					var textNum = $(this).text();
+					var pagePar = {};
+					if (textNum == "第一页") {
+						pagePar.pageNum = firstPage;
+						pagePar.pagesize = 10;
+					} else if (textNum == "最末页") {
+						pagePar.pageNum = lastPage;
+						pagePar.pagesize = 10;
+					} else if (textNum == "上一页") {
+						pagePar.pageNum = pageNum - 1 * 1;
+						pagePar.pagesize = 10;
+						if (pagePar.pageNum < firstPage) {
+							pagePar.pageNum = firstPage;
+						}
+					} else if (textNum == "下一页") {
+						pagePar.pageNum = pageNum + 1 + 0;
+						pagePar.pagesize = 10;
+						if (pagePar.pageNum > lastPage) {
+							pagePar.pageNum = lastPage;
+						}
+					} else {
+						pagePar.pageNum = textNum * 1;
+						pagePar.pagesize = 10;
+					};
+//					console.log(pagePar)
+//					页码传输到后台
+//					$.ajax({
+//						type:"post",
+//						data:pagePar,
+//						dataType:"json",
+//						url:"page.json",
+//				        	success:fn,
+//						error:function(){
+//							console.log('服务器忙，请稍后再试');
+//						}
+//					});
+				})
+			}
+			getData(getPageDate);
+			$("#propDateShow").on("click", ".deleteBtn", function() {
+			      $('#my-confirm').modal({
+			        relatedTarget: this,
+			        onConfirm: function(options) {
+			          var deleteId = $(this.relatedTarget).parent().parent().attr("date-id");
+			          var msg = '你要删除的链接 ID 为 ' + deleteId;
+			          console.log(msg);
+			        }
+			      });
+			});
+		</script>
+	</body>
+
+</html>
